@@ -11,5 +11,5 @@ io.on('connection', function(socket){
 });
 
 http.listen(port, function(){
-  console.log(`Dasbhoard listening on *:${port}`);
+  console.log(`Dashboard listening on *:${port}`);
 });
