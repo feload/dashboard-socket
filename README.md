@@ -1,3 +1,2 @@
 # Dashboard socket.
-Dashboard socket instance.
-This is an example about how to implement socket io with docker.
+This is an example about dockerizing a socket.io service for a generic application.
