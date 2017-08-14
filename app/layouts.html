@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Solvencia socket.</title>
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
+    <script src="http://localhost:8181/socket.io/socket.io.js"></script>
+    <script>
+      var app_id = "layouts";
+      var version = 'v0.32.0';
+      var username = "user".concat(Math.round(Math.random() * 1000).toString());
+      var state = io.connect("http://localhost:8181/state");
+    </script>
+  </head>
+  <body>
+    <h1>Solvencia</h1>
+    <script src="js/state/client.js"></script>
+  </body>
+</html>

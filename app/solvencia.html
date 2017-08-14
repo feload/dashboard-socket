@@ -2,26 +2,19 @@
 <html>
   <head>
     <title>Solvencia socket.</title>
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
     <script src="http://localhost:8181/socket.io/socket.io.js"></script>
     <script>
       var app_id = "solvencia";
       var version = 'v1.5.0';
       var username = "user".concat(Math.round(Math.random() * 1000).toString());
-      //var messaging = io("http://localhost:8181/messages");
       var state = io.connect("http://localhost:8181/state");
     </script>
   </head>
   <body>
     <h1>Solvencia</h1>
-    <script>
-      state.on('connect', (socket) => {
-        console.log(app_id + ' ' + version + ' online.');
-        state.emit('user_online', { app_id, username });
-      });
-      state.on('ask', (msg) => {
-        console.log(`OMG! somebody's asking for ${msg}`);
-        state.emit('answer', { app_id, version })
-      });
-    </script>
+    <script src="js/state/client.js"></script>
   </body>
 </html>

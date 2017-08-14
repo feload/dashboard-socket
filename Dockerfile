@@ -1,5 +1,5 @@
 FROM node:boron
-MAINTAINER Felipe <feload@gmail.com>
+MAINTAINER Felipe <fj.lopez@ugto.mx>
 
 WORKDIR /usr/src/app
 ARG port=8181
