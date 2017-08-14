@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Dashboard socket.</title>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="http://localhost:8181/socket.io/socket.io.js"></script>
+    <script>
+      var app_id = "dashboard";
+      var version = 'v2.0.0';
+      var username = "admin";
+      //var messaging = io.connect("http://localhost:8181/messages");
+      //var services = io.connect("http://localhost:8181/services");
+      var state = io.connect("http://localhost:8181/state");
+    </script>
+  </head>
+  <body>
+    <h1>Dashboard</h1>
+    <div id="apps">
+    </div>
+    <script>
+      state.on('connect', () => {
+        console.log(app_id + ' ' + version + ' online.');
+        state.emit('ask', 'souls...');
+        state.emit('user_online', { app_id, username });
+      });
+      state.on('user_online', (users) => {
+        console.log('user_online:', users);
+      });
+      state.on('user_offline', (user) => {
+        console.log(user + ' offline.');
+      });
+      state.on('answer', (msg) => {
+          console.log(`Finally... ${msg.app_id}`);
+          $('#'+msg.app_id).replaceWith('<div id="'+msg.app_id+'">'+msg.app_id+' '+msg.version+''+'</div>');
+      });
+    </script>
+  </body>
+</html>

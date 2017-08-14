@@ -1,15 +1,4 @@
-var http = require('http').Server();
-var io = require('socket.io')(http);
-
-const port = process.env.port || 3000;
-
-io.on('connection', function(socket){
-  console.log('a user connected');
-  socket.on('disconnect', function(){
-    console.log('user disconnected');
-  });
-});
-
-http.listen(port, function(){
-  console.log(`Dashboard listening on *:${port}`);
-});
+var io = require('socket.io')(8181);
+var messages = require('./channels/messages')(io);
+var services = require('./channels/services')(io);
+var state = require('./channels/state')(io);
