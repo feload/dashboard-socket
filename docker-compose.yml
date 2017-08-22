@@ -1,0 +1,12 @@
+version: '2'
+services:
+  mongo:
+    image: "mongo"
+    volume:
+      - ./socket/data:/data/db
+  socket:
+    build: .
+    ports:
+      - "8181:8181"
+    depends_on:
+      - mongo
