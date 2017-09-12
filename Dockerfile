@@ -4,7 +4,7 @@ MAINTAINER Felipe <fj.lopez@ugto.mx>
 WORKDIR /usr/src/app
 ARG port=8181
 
-COPY app .
+COPY src/server/ .
 
 RUN npm install
 

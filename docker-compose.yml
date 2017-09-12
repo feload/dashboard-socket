@@ -2,11 +2,16 @@ version: '2'
 services:
   mongo:
     image: "mongo"
-    volume:
-      - ./socket/data:/data/db
+    volumes:
+      - ./data:/data/db
+    ports:
+      - "27017:27017"
+    restart: "on-failure"
+
   socket:
     build: .
     ports:
       - "8181:8181"
     depends_on:
       - mongo
+    restart: "on-failure"

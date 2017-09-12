@@ -11,7 +11,7 @@
       var app_id = "dashboard";
       var version = 'v2.0.0';
       var username = "admin";
-      var state = io.connect("http://localhost:8181/state");
+      var state_s = io.connect("http://localhost:8181/state", { reconnection: false });
       var apps = { };
 
       function renderDOM (clients) {
@@ -38,6 +38,7 @@
         <span class="users"></span>
     </div>
     <div id="apps"></div>
-    <script src="js/state/master.js"></script>
+    <script src="dist/state.js"></script>
+    <script>dboard.state.master.init(state_s, renderDOM);</script>
   </body>
 </html>
