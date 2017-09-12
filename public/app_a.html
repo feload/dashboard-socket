@@ -15,7 +15,7 @@
         version: version,
         username: username
       };
-      var state_s = io.connect("http://localhost:8181/state");
+      var state_s = io.connect("http://localhost:8181/state", { reconnection: false });
     </script>
   </head>
   <body>
