@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+  <head>
+    <title>App a socket.</title>
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
+    <script src="http://localhost:8181/socket.io/socket.io.js"></script>
+    <script>
+      var app_id = "app_a";
+      var version = 'v1.5.0';
+      var username = "user".concat(Math.round(Math.random() * 1000).toString());
+      var app = {
+        app_id: app_id,
+        version: version,
+        username: username
+      };
+      var state_s = io.connect("http://localhost:8181/state");
+    </script>
+  </head>
+  <body>
+    <h1>App_a</h1>
+    <script src="dist/state.js"></script>
+    <script>dboard.state.client.init(state_s, app);</script>
+  </body>
+</html>

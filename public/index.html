@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Dashboard socket.</title>
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="http://localhost:8181/socket.io/socket.io.js"></script>
+    <script>
+      var app_id = "dashboard";
+      var version = 'v2.0.0';
+      var username = "admin";
+      var state_s = io.connect("http://localhost:8181/state");
+      var apps = { };
+
+      function renderDOM (clients) {
+        clients.forEach((c) => {
+          const $el = $(`.${c.app_id}`);
+          $('.version', $el).html(c.version);
+          $('.users', $el).html(c.users);
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Dashboard</h1>
+    <div class="app_a">
+      <a href="app_a.html" target="_blank">app_a
+        <span class="version"></span>
+      </a><br>
+      <span class="users"></span>
+    </div>
+    <div class="app_b">
+        <a href="app_b.html" target="_blank">app_b
+          <span class="version"></span>
+        </a><br>
+        <span class="users"></span>
+    </div>
+    <div id="apps"></div>
+    <script src="dist/state.js"></script>
+    <script>dboard.state.master.init(state_s, renderDOM);</script>
+  </body>
+</html>
