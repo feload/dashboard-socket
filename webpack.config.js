@@ -6,8 +6,8 @@ module.exports = {
       state: './src/clients/state/index.js',
   },
   output: {
-    filename: '[name].js',
-    path: path.resolve(__dirname, 'public/dist')
+    filename: '[name]/lib/index.js',
+    path: path.resolve(__dirname, 'dist')
   },
   module: {
     rules: [

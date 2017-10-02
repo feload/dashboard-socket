@@ -1,0 +1,9 @@
+{
+  "name": "@drhpkg/ug-dashboard-socket-state",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "keywords": [],
+  "author": "fj.lopez",
+  "license": "UNLICENSED"
+}
